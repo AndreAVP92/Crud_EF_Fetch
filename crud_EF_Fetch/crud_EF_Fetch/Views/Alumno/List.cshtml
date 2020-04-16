@@ -1,0 +1,19 @@
+﻿@using crud_EF_Fetch.Models.ViewModel
+@model List<ListAlumnoViewModel>
+@{
+    //ViewBag.Title = "List";
+    Layout = null;
+}
+
+@*<h2>List</h2>*@
+@foreach(var oAlumno in Model){
+    <div>
+        Nombre: @oAlumno.Nombre <br/>
+        Apellido: @oAlumno.Apellido <br/>
+        Edad: @oAlumno.Edad <br />
+        Sexo: @oAlumno.Sexo <br />
+        FechaRegistro: @oAlumno.FechaRegistro <br/>
+
+    </div>
+}
+
