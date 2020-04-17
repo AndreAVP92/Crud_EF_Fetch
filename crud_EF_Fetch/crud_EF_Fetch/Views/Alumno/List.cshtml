@@ -12,7 +12,11 @@
         Apellido: @oAlumno.Apellido <br/>
         Edad: @oAlumno.Edad <br />
         Sexo: @oAlumno.Sexo <br />
-        FechaRegistro: @oAlumno.FechaRegistro.ToShortDateString() <br/> 
+        FechaRegistro: @oAlumno.FechaRegistro.ToShortDateString()<br />
+        <input type="button" value="Editar" onclick="document.location.href='@Url.Content("~/Alumno/Edit?Id=" + oAlumno.Id)'"/>
+        <input type="button" value="Eliminar" onclick="deleteRegister(@oAlumno.Id)"/>
+        <hr/> 
+
     </div>
 }
 

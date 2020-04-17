@@ -4,7 +4,7 @@
 }
 
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 <input type="button" value="refrescar" onclick="Get()">
 <input type="button" value="nuevo" onclick="document.location.href='@Url.Content("~/Alumno/New")'">
 
@@ -13,6 +13,7 @@
 </div>
 
 <script>
+    //Listar
     urlGet = "@Url.Content("~/Alumno/List")";
     Get();
     function Get() {
@@ -23,5 +24,10 @@
             .then((data) => {
                 document.getElementById("divLista").innerHTML = data;
             })
+    }
+
+    //Eliminar
+    function deleteRegister(Id) {
+        alert(Id);
     }
 </script>

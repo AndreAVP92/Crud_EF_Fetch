@@ -221,6 +221,7 @@
     <Content Include="Views\Alumno\Index.cshtml" />
     <Content Include="Views\Alumno\List.cshtml" />
     <Content Include="Views\Alumno\New.cshtml" />
+    <Content Include="Views\Alumno\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

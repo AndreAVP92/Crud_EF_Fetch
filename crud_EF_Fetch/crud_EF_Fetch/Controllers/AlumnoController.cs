@@ -72,5 +72,49 @@ namespace crud_EF_Fetch.Controllers
                 return Content(ex.Message);             
             }
         }
+
+        public ActionResult Edit(int Id)
+        {
+            AlumnoViewModel model = new AlumnoViewModel();
+            using (var db = new Alumnos_DBEntities())
+            {
+                var oAlumno = db.Alumno.Find(Id);
+                
+                model.Nombre = oAlumno.Nombre;
+                model.Apellido = oAlumno.Apellido;
+                model.Edad = oAlumno.Edad;
+                model.Sexo = oAlumno.Sexo;
+                //model.FechaRegistro = oAlumno.FechaRegistro;
+                model.Id = oAlumno.Id;
+
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Update(AlumnoViewModel model)
+        {
+            try
+            {
+                using (var db = new Alumnos_DBEntities())
+                {
+                    var oAlumno = db.Alumno.Find(model.Id);
+                    oAlumno.Nombre = model.Nombre;
+                    oAlumno.Apellido = model.Apellido;
+                    oAlumno.Edad = model.Edad;
+                    oAlumno.Sexo = model.Sexo;
+                    //oAlumno.FechaRegistro = model.FechaRegistro;
+
+                    db.Entry(oAlumno).State = System.Data.Entity.EntityState.Modified; //Me indica el EF que el Id de dicho registro ha sido editado
+                    db.SaveChanges();
+                }
+
+                return Content("1");
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+        }
     }
 }
