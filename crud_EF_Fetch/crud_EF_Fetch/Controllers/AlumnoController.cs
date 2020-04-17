@@ -116,5 +116,25 @@ namespace crud_EF_Fetch.Controllers
                 return Content(ex.Message);
             }
         }
+
+        [HttpPost]
+        public ActionResult Delete (int Id)
+        {
+            try
+            {
+                using (var db = new Alumnos_DBEntities())
+                {
+                    var oAlumno = db.Alumno.Find(Id);
+                    db.Alumno.Remove(oAlumno);                   
+                    db.SaveChanges();
+                }
+
+                return Content("1");
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+        }
     }
 }
