@@ -19,6 +19,7 @@ namespace crud_EF_Fetch.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult List()
         {
             var list = new List<ListAlumnoViewModel>();
@@ -39,6 +40,37 @@ namespace crud_EF_Fetch.Controllers
             }
 
             return View(list);
+        }
+
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Save(AlumnoViewModel model)
+        {
+            try
+            {
+                using (var db = new Alumnos_DBEntities())
+                {
+                    var oAlumno = new Alumno();
+                    oAlumno.Nombre = model.Nombre;
+                    oAlumno.Apellido = model.Apellido;
+                    oAlumno.Edad = model.Edad;
+                    oAlumno.Sexo = model.Sexo;
+                    oAlumno.FechaRegistro = model.FechaRegistro;
+
+                    db.Alumno.Add(oAlumno);
+                    db.SaveChanges();
+                }
+
+                return Content("1");
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);             
+            }
         }
     }
 }

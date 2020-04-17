@@ -1,0 +1,68 @@
+﻿@model crud_EF_Fetch.Models.ViewModel.AlumnoViewModel
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+
+<form>
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(d => d.Nombre)
+            @Html.TextBoxFor(d => d.Nombre, new { id = "Name" } )
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.Apellido)
+            @Html.TextBoxFor(d => d.Apellido, new { id = "LastName" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.Edad)
+            @Html.TextBoxFor(d => d.Edad, new { id = "Age" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.Sexo)
+            @Html.TextBoxFor(d => d.Sexo, new { id = "Sex" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.FechaRegistro)
+            @Html.TextBoxFor(d => d.FechaRegistro, new { id = "DateRegister", disabled="disabled", @Value = @DateTime.Now.ToShortDateString() })
+        </div>
+
+        <input type="button" value="Agregar" onclick="addRegister()" />
+
+    </div>
+</form>
+
+<script>
+    var url = "@Url.Content("~/Alumno/Save")"; //Save es el nombre del método
+    function addRegister() {
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+                Nombre: document.getElementById("Name").value,
+                Apellido: document.getElementById("LastName").value,
+                Edad: document.getElementById("Age").value,
+                Sexo: document.getElementById("Sex").value,
+                FechaRegistro: document.getElementById("DateRegister").value
+            }),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type" : "application/json"
+            }
+        }).then(function (response) {
+            if (response.ok) {
+                return response.text()
+            }
+            else {
+                alert("Error al ejecutar :(")
+            }
+        }).then(function (Data) {
+            if (Data != "1") {
+                alert(Data);
+            } else {
+                document.location.href = "@Url.Content("~/Alumno/")";
+            }
+        })
+    }
+</script>
+

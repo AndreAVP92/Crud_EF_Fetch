@@ -1,11 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Alumnos";
 }
 
 
 <h2>Index</h2>
 <input type="button" value="refrescar" onclick="Get()">
+<input type="button" value="nuevo" onclick="document.location.href='@Url.Content("~/Alumno/New")'">
 
 <div id="divLista" style="border:1px solid #999;">
    

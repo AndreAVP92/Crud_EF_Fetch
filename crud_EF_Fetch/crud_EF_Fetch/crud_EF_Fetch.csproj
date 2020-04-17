@@ -161,6 +161,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Alumnos_DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\AlumnoViewModel.cs" />
     <Compile Include="Models\ViewModel\ListAlumnoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -219,6 +220,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Alumno\Index.cshtml" />
     <Content Include="Views\Alumno\List.cshtml" />
+    <Content Include="Views\Alumno\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
